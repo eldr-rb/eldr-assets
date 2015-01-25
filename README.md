@@ -36,7 +36,7 @@ class App < Eldr::App
 end
 ```
 
-View:
+Then in your view do:
 
 ```ruby
 html

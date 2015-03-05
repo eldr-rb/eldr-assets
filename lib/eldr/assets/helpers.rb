@@ -40,10 +40,15 @@ module Eldr
         "#{result_path}#{timestamp}"
       end
 
+      def assets_uri_path
+        assets_uri_path  = self.configuration.assets_uri_path
+        assets_uri_path ||= 'assets/'
+      end
+
       def uri_root_path(*paths)
         root_uri   = self.configuration.uri_root
-        root_uri ||= ENV['ROOT_URI'] if ENV.include? 'ROOT_URI'
-        File.join(ENV['RACK_BASE_URI'].to_s, root_uri || '/', *paths)
+        root_uri ||= ENV['ROOT_URI']
+        File.join(ENV['RACK_BASE_URI'].to_s, root_uri || '/', assets_uri_path, *paths)
       end
 
       private
